@@ -1,0 +1,38 @@
+.inputContainer {
+    position: relative;
+    margin: 10px 5px 15px 5px;
+    width: calc(100% - 10px);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.input {
+    width: 100%;
+    padding: 11px 47px;
+    border-radius: 30px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #2d3748;
+    background: white;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+.input::placeholder {
+    color: #B5B5B5;
+    font-weight: 500;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
