@@ -9,10 +9,15 @@ import { useProducts } from './hooks/useProducts'
 import banner from '../public/assets/img/banner.png'
 import { useState, useMemo, useCallback } from 'react'
 import type { Category } from './types/categories.type'
+import SearchResults from './components/SearchResults/SearchResult'
 
 function App() {
   const { products, loading, error } = useProducts()
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null)
+  const [searchValue, setSearchValue] = useState('')
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
+
+  const popularSearches = ['Смартфоны', 'Ноутбуки', 'Наушники', 'Телевизоры', 'Фотокамеры']
 
   const uniqueCategories = useMemo(() => {
     const categoryMap = new Map<number, Category>()
@@ -30,12 +35,34 @@ function App() {
     setSelectedCategoryId(categoryId)
   }, [])
 
+  const handleSearchChange = useCallback((value: string) => {
+    setSearchValue(value)
+  }, [])
+
+  const handleSearchFocus = useCallback(() => {
+    setIsSearchFocused(true)
+  }, [])
+
+  const handleSearchBlur = useCallback(() => {
+    setTimeout(() => setIsSearchFocused(false), 200)
+  }, [])
+
+  const handlePopularSearch = useCallback((term: string) => {
+    setSearchValue(term)
+    setIsSearchFocused(false)
+  }, [])
+
   const filteredProducts = useMemo(() => {
+    if (searchValue) {
+      return products.filter(product =>
+        product.Product_Name.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    }
     if (!selectedCategoryId) return products
     return products.filter(product =>
       product.categories.some(category => category.Category_ID === selectedCategoryId)
     )
-  }, [products, selectedCategoryId])
+  }, [products, selectedCategoryId, searchValue])
 
   if (error) {
     return (
@@ -43,7 +70,12 @@ function App() {
         <Header/>
         <Nav/>
         <main>
-          <Input/>
+          <Input
+            value={searchValue}
+            onChange={handleSearchChange}
+            onFocus={handleSearchFocus}
+            onBlur={handleSearchBlur}
+          />
           <div className="error">Ошибка загрузки: {error}</div>
         </main>
         <Footer/>
@@ -56,19 +88,35 @@ function App() {
       <Header/>
       <Nav/>
       <main>
-        <Input/>
-        <img src={banner} alt="banner" className="banner"/>
+        <Input
+          value={searchValue}
+          onChange={handleSearchChange}
+          onFocus={handleSearchFocus}
+          onBlur={handleSearchBlur}
+        />
+        
+        {isSearchFocused ? (
+          <SearchResults
+            searchValue={searchValue}
+            popularSearches={popularSearches}
+            onPopularSearch={handlePopularSearch}
+            products={filteredProducts}
+          />
+        ) : (
+          <>
+            <img src={banner} alt="banner" className="banner"/>
             <Categories
               categories={uniqueCategories}
               onCategorySelect={handleCategorySelect}
               selectedCategoryId={selectedCategoryId}
             />
-          
             <Products
               products={filteredProducts}
               selectedCategoryId={selectedCategoryId}
               loading={loading}
             />
+          </>
+        )}
       </main>
       <Footer/>
     </div>
