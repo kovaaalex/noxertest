@@ -3,6 +3,7 @@
   grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
   gap: 1rem;
   padding: 1rem 0;
+  margin-bottom: 140px;
 }
 
 .productCard {
@@ -28,6 +29,8 @@
 }
 
 .productName {
+  padding: 0 5px;
+  text-align: left;
   font-size: 14px;
   height: 32px;
   font-weight: 400;
@@ -37,6 +40,8 @@
 }
 
 .productPrice {
+  padding: 0 5px;
+  text-align: left;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -81,7 +86,32 @@
   font-size: 16px;
   color: #718096;
 }
-.productInfo{
-    padding: 0 5px;
-    text-align: left;
+@media (max-width: 424px) {
+  .productsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(169px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .productCard {
+    width: 169px;
+  }
+  .productImage {
+    width: 163px;
+    height: 164px;
+  }
+  .productName {
+    font-size: 13px;
+    height: 30px;
+  }
+  .currentPrice {
+    font-size: 15px;
+  }
+  .oldPrice,
+  .discountPercent {
+    font-size: 13px;
+  }
+  .addToCartButton {
+    font-size: 13px;
+    padding: 7px;
+  }
 }

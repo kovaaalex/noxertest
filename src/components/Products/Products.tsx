@@ -20,7 +20,6 @@ const Products: React.FC<ProductsProps> = ({ products, selectedCategoryId, loadi
   if (filteredProducts.length === 0) return <div className={styles.noProducts}>Товары не найдены</div>;
 
   return (
-    <div className={styles.products}>
       <div className={styles.productsGrid}>
         {filteredProducts.map(product => {
           const mainImage = product.images.find(img => img.MainImage) || product.images[0];
@@ -66,7 +65,6 @@ const Products: React.FC<ProductsProps> = ({ products, selectedCategoryId, loadi
           );
         })}
       </div>
-    </div>
   );
 };
 

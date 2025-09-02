@@ -52,7 +52,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className='app'>
       <Header/>
       <Nav/>
       <main>
@@ -71,7 +71,7 @@ function App() {
             />
       </main>
       <Footer/>
-    </>
+    </div>
   )
 }
 
