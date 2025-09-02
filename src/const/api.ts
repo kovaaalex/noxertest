@@ -1,0 +1,1 @@
+export const API_BASE = 'https://noxer-test.ru/webapp/api';
