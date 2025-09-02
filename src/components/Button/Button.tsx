@@ -1,17 +1,6 @@
 import React from 'react';
 import styles from './Button.module.css';
-
-interface ButtonProps {
-  icon?: string;
-  alt?: string;
-  onClick?: () => void;
-  children?: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'icon';
-  size?: 'small' | 'medium' | 'large';
-  disabled?: boolean;
-  className?: string;
-  type?: 'button' | 'submit' | 'reset';
-}
+import type { ButtonProps } from '../../types/button.types';
 
 const Button: React.FC<ButtonProps> = ({
   icon,

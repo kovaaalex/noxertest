@@ -1,0 +1,19 @@
+.categoriesList {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+}
+.categoriesList::-webkit-scrollbar {
+  height: 4px;
+}
+.categoriesList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+.categoriesList::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 2px;
+}
+.categoriesList::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
