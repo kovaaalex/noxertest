@@ -1,22 +1,15 @@
 import React from 'react';
 import styles from './Input.module.css';
 import input from '../../../public/assets/img/input.svg';
-interface InputProps {
-  placeholder?: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  className?: string;
-}
+import type { InputProps } from '../../types/input.types';
 
 const Input: React.FC<InputProps> = ({
-  placeholder = "Найти товары",
-  value = "",
+  placeholder = 'Найти товары',
+  value = '',
   onChange,
   onFocus,
   onBlur,
-  className = ""
+  className = '',
 }) => {
   return (
     <div className={`${styles.inputContainer} ${className}`}>

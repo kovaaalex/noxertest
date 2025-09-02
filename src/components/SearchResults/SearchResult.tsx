@@ -1,19 +1,13 @@
-import React from 'react'
-import styles from './SearchResults.module.css'
-import type { Product } from '../../types/product.types'
+import React from 'react';
+import styles from './SearchResults.module.css';
 import input from '../../../public/assets/img/input.svg';
-interface SearchResultsProps {
-  searchValue: string
-  popularSearches: string[]
-  onPopularSearch: (term: string) => void
-  products: Product[]
-}
+import type { SearchResultsProps } from '../../types/search.types';
 
 const SearchResults: React.FC<SearchResultsProps> = ({
   searchValue,
   popularSearches,
   onPopularSearch,
-  products
+  products,
 }) => {
   return (
     <div className={styles.searchResults}>
@@ -42,7 +36,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             <p className={styles.noResults}>Ничего не найдено</p>
           ) : (
             <div className={styles.productsGrid}>
-              {products.map(product => (
+              {products.map((product) => (
                 <div key={product.Product_ID} className={styles.productCard}>
                   <img
                     src={product.images[0]?.Image_URL}
@@ -60,7 +54,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default SearchResults;

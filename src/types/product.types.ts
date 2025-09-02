@@ -1,4 +1,4 @@
-import type { Category } from "./categories.type";
+import type { ICategory } from './categories.type';
 
 export interface ProductImage {
   Image_ID: number;
@@ -24,13 +24,13 @@ export interface ProductMark {
   Mark_Name: string;
 }
 
-export interface Product {
+export interface IProduct {
   Product_ID: number;
   Product_Name: string;
   OnMain: boolean;
   Created_At: string;
   Updated_At: string;
-  categories: Category[];
+  categories: ICategory[];
   images: ProductImage[];
   colors: ProductColor[];
   parameters: ProductParameter[];
@@ -39,5 +39,11 @@ export interface Product {
 }
 
 export interface ProductsResponse {
-  products: Product[];
+  products: IProduct[];
+}
+
+export interface ProductsProps {
+  products: IProduct[];
+  selectedCategoryId: number | null;
+  loading: boolean;
 }

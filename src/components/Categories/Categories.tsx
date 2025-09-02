@@ -1,33 +1,26 @@
 import React from 'react';
 import styles from './Categories.module.css';
 import type { CategoriesProps } from '../../types/categories.type';
-import notdownload from '../../../public/assets/img/notdownload.jfif';
+import Category from '../Category/Category';
 
 const Categories: React.FC<CategoriesProps> = ({
   categories,
   onCategorySelect,
-  selectedCategoryId
+  selectedCategoryId,
 }) => {
-  const sortedCategories = [...categories].sort((a, b) => a.sort_order - b.sort_order);
-  
+  const sortedCategories = [...categories].sort(
+    (a, b) => a.sort_order - b.sort_order
+  );
+
   return (
     <ul className={styles.categoriesList}>
-      {sortedCategories.map(category => (
-        <li
+      {sortedCategories.map((category) => (
+        <Category
           key={category.Category_ID}
-          className={`${styles.categoryItem} ${selectedCategoryId === category.Category_ID ? styles.active : ''}`}
-          onClick={() => onCategorySelect(category.Category_ID)}
-        >
-          <img
-            src={category.Category_Image || notdownload}
-            alt={category.Category_Name}
-            className={styles.categoryImage}
-            onError={(e) => {
-              e.currentTarget.src = notdownload;
-            }}
-          />
-          <span className={styles.categoryName}>{category.Category_Name}</span>
-        </li>
+          category={category}
+          isSelected={selectedCategoryId === category.Category_ID}
+          onClick={onCategorySelect}
+        />
       ))}
     </ul>
   );

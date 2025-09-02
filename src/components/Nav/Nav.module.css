@@ -1,24 +1,24 @@
-.nav{
-    display: flex;
-    justify-content: space-between;
-    margin: 2px 5px 0 5px;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 5px 0 5px;
 }
-.tg__channel{
-    display: inline-flex;
-    gap: 6px;
-    align-items: center;
-    height: 30px;
-    border-radius: 20px;
-    padding: 3px 7px 3px 3px;
-    background-color: #fff;
-    color: #292928;
-    line-height: 1;
+.tg__channel {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  height: 30px;
+  border-radius: 20px;
+  padding: 3px 7px 3px 3px;
+  background-color: #fff;
+  color: #292928;
+  line-height: 1;
 }
-.tg__channel img{
-    margin: 0;
-    padding: 0;
-    height: 24px;
+.tg__channel img {
+  margin: 0;
+  padding: 0;
+  height: 24px;
 }
-.nav p{
-    font-size: 11px;
+.nav p {
+  font-size: 11px;
 }
